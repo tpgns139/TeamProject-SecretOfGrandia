@@ -64,7 +64,7 @@ void EnemyManager::setEnemy()
 	_vEm.push_back(F);*/
 
 	/*Enemy* B_W;
-	B_W = new Boss_W;
+	B_W = new Hydra_W;
 	B_W->init(PointMake(WINSIZEX / 2, WINSIZEY / 2), 10, 2);
 
 	_vEm.push_back(B_W);*/

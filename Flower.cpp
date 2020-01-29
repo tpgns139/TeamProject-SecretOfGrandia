@@ -90,9 +90,9 @@ void Flower::render()
 {
 	if (KEYMANAGER->isToggleKey('1'))
 	{
-		Rectangle(getMemDC(), en.rc);
+		Rectangle(_backBuffer->getMemDC(), en.rc);
 	}
-	en.img->aniRender(getMemDC(),
+	en.img->aniRender(_backBuffer->getMemDC(),
 		en.rc.left,
 		en.rc.top,
 		en.Ani);

@@ -11,6 +11,8 @@ class Rabbit:public Enemy
 
 
 public:
+	Rabbit();
+	~Rabbit();
 	virtual HRESULT init(POINT pos, int FPS, float SPEED);
 	virtual void release();
 	virtual void update();

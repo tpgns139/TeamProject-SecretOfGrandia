@@ -43,4 +43,9 @@ HRESULT GameObject::init()
 	return S_OK;
 }
 
+HRESULT GameObject::init(POINT pos, int FPS, float SPEED)
+{
+	return S_OK;
+}
+
 

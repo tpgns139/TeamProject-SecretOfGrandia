@@ -65,14 +65,12 @@ protected:
 
 public:
 	Enemy();
-	~Enemy() {};
+	~Enemy();
 	virtual HRESULT init();
 	virtual HRESULT init(POINT pos, int FPS, float SPEED);
 	virtual void release();
 	virtual void update();
 	virtual void render();
-
-	virtual void update();
 	
 
 };

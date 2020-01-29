@@ -26,7 +26,7 @@ void BasicScene::setGameObj(OBJSTRUCT obj)
 		break;
 	case FLOWER:
 		ins = new Flower;
-
+		ins->init(PointMake(WINSIZEX/2, WINSIZEY/2), 10, 2);
 		ins->setimage(IMAGEMANAGER->findImage("Flower"));
 		settingObj(ins, obj);
 		break;

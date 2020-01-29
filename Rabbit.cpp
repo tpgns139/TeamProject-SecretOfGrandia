@@ -159,11 +159,11 @@ void Rabbit::render()
 {
 	if (KEYMANAGER->isToggleKey('1'))
 	{
-		Rectangle(getMemDC(), en.senseRC);
-		Rectangle(getMemDC(), en.rc);
+		Rectangle(_backBuffer->getMemDC(), en.senseRC);
+		Rectangle(_backBuffer->getMemDC(), en.rc);
 	}
-	Rectangle(getMemDC(), rc);
-	en.img->aniRender(getMemDC(), en.rc.left, en.rc.top, en.Ani);
+	Rectangle(_backBuffer->getMemDC(), rc);
+	en.img->aniRender(_backBuffer->getMemDC(), en.rc.left, en.rc.top, en.Ani);
 }
 
 void Rabbit::moving()

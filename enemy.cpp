@@ -6,6 +6,9 @@ Enemy::Enemy()
 {
 }
 
+Enemy::~Enemy()
+{
+}
 HRESULT Enemy::init()
 {
 	return S_OK;
@@ -25,9 +28,6 @@ void Enemy::release()
 }
 
 
-Enemy::~Enemy()
-{
-}
 
 void Enemy::update()
 {

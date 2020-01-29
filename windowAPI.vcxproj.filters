@@ -73,6 +73,9 @@
     <Filter Include="playGround\Object\Player">
       <UniqueIdentifier>{eb01cde9-82dc-470c-bd7a-24c3e893c13a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Object\Enemy\Boss">
+      <UniqueIdentifier>{badf279a-5e9f-4ea0-b749-45605baf27b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -189,6 +192,18 @@
     <ClInclude Include="Enemy.h">
       <Filter>playGround\Object\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>playGround\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Hydra_F.h">
+      <Filter>playGround\Object\Enemy\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Hydra_S.h">
+      <Filter>playGround\Object\Enemy\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Hydra_W.h">
+      <Filter>playGround\Object\Enemy\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -289,6 +304,18 @@
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>playGround\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>playGround\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Hydra_F.cpp">
+      <Filter>playGround\Object\Enemy\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Hydra_S.cpp">
+      <Filter>playGround\Object\Enemy\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Hydra_W.cpp">
+      <Filter>playGround\Object\Enemy\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
