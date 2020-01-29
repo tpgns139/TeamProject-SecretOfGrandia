@@ -17,7 +17,8 @@
 class playGround : public gameNode
 {
 private:
-	
+
+	EnemyManager* _em;
 
 
 public:

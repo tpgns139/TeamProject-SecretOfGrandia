@@ -48,10 +48,6 @@ void BasicScene::update()
 {
 	for (int i = 0; i < _gameObj.size(); i++)
 	{
-		_gameObj[i]->update();
-	}
-	for (int i = 0; i < _gameObj.size(); i++)
-	{
 		for (int j = i; j < _gameObj.size(); j++)
 		{
 			if (_gameObj[i]->getRect().bottom > _gameObj[j]->getRect().bottom)
@@ -123,6 +119,7 @@ void BasicScene::render()
 	{
 		_gameObj[i]->getImage()->render(getMemDC(), _gameObj[i]->getCenter().x ,_gameObj[i]->getCenter().y);
 	}
+	
 }
 
 BasicScene::BasicScene()

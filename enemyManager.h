@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "gameNode.h"
+#include "GameObject.h"
 #include "Enemy.h"
 #include "Rabbit.h"
 #include "Slime.h"
@@ -8,7 +8,7 @@
 #include "Hydra_W.h"
 
 
-class EnemyManager : public gameNode
+class EnemyManager : public GameObject
 {
 private:
 	typedef vector<Enemy*>				vEnemy;
@@ -17,7 +17,6 @@ private:
 private:
 	vEnemy _vEm;
 	viEnemy _viEm;
-	Enemy* En;
 
 
 
@@ -28,8 +27,7 @@ public:
 	virtual HRESULT init();
 	virtual void release();
 	virtual void update();
-	virtual void render();
-	void setEnemy(); //에너미 세팅
+	void setEnemy(Enemy* enemy); //에너미 세팅
 
 
 

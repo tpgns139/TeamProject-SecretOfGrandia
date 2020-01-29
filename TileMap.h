@@ -1,4 +1,5 @@
 #pragma once
+#include"EnemyManager.h"
 #include<fstream>
 
 #define TILESIZE 32 // 타일사이즈 

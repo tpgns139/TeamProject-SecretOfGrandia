@@ -5,6 +5,8 @@
 #include"Rabbit.h"
 #include"Hydra.h"
 #include"Flower.h"
+#include"Hydra_W.h"
+
 class BasicScene:public gameNode
 {
 protected:
