@@ -26,7 +26,7 @@ void BasicScene::setGameObj(OBJSTRUCT obj)
 		break;
 	case FLOWER:
 		ins = new Flower;
-
+		ins->init(PointMake(WINSIZEX/2, WINSIZEY/2), 10, 2);
 		ins->setimage(IMAGEMANAGER->findImage("Flower"));
 		settingObj(ins, obj);
 		break;
@@ -46,10 +46,6 @@ void BasicScene::settingObj(GameObject* ins, OBJSTRUCT obj)
 
 void BasicScene::update()
 {
-	for (int i = 0; i < _gameObj.size(); i++)
-	{
-		_gameObj[i]->update();
-	}
 	for (int i = 0; i < _gameObj.size(); i++)
 	{
 		for (int j = i; j < _gameObj.size(); j++)
@@ -123,6 +119,7 @@ void BasicScene::render()
 	{
 		_gameObj[i]->getImage()->render(getMemDC(), _gameObj[i]->getCenter().x ,_gameObj[i]->getCenter().y);
 	}
+	
 }
 
 BasicScene::BasicScene()

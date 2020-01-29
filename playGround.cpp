@@ -30,7 +30,11 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("stageTwo", new StageTwoScene);
 
 	SCENEMANAGER->changeScene("stageTwo");
+	_em = new EnemyManager;
 	return S_OK;
+
+	
+
 }
 
 
@@ -58,6 +62,8 @@ void playGround::render()
 	PatBlt(getMemDC(), 0, 0, 3, WINSIZEY, WHITENESS);
 //========================================================
 	SCENEMANAGER->render();
+	
+	
 
 //====================================================
 	_backBuffer->render(getHDC(), 0, 0);

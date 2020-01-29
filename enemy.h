@@ -1,42 +1,77 @@
 #pragma once
-#include "gameNode.h"
+#include "GameObject.h"
 
-class enemy : public gameNode
+enum EnemyState
 {
-protected:
-	image* _imageName;
-	RECT _rc;
-	
-	int _currentFrameX;		//프레임이미지 1개를 가지가 각각 다른 프레임을 유지하려고
-	int _currentFrameY;
-
-	int _count;				//프레임 카운트용
-	int _fireCount;			//총알 발사용
-	int _rndFireCount;		//랜덤하게 쏠 변수
-
-public:
-	enemy();
-	~enemy();
-
-	HRESULT init();
-	HRESULT init(const char* imageName, POINT position);
-	void release();
-	void update();
-	void render();
-
-	void move();
-	void draw();
-
-	bool bulletCountFire();		//총알 쏘라고 신호를 줄 함수
-
-	inline RECT getRect() { return _rc; }
-
+	Idle,
+	Run,
+	Atk,
+	Dmg,
+	Dead,
+	deadEffect
 };
 
-class Enemy
+enum BossState
 {
+	Come,
+	Boss_Idle,
+	Heading,
+	Breath,
+	Stun,
+	Big,
+	Small
+
+};
+enum EnemyName
+{
+	Name_Rabbit,
+	Name_Slime,
+	Name_Flower,
+	Name_Hydra_S, //여름
+	Name_Hydra_F, //가을
+	Name_Hydra_W  //겨울
+};
+
+enum direction
+{
+	LEFT,
+	RIGHT,
+	DOWN,
+	UP
+};
+
+struct info
+{
+	RECT rc;
+	RECT senseRC;
+	float x, y;
+	image* img;
+	direction dir;
+	EnemyName name;
+	EnemyState state;
+	BossState _BossState;
+	animation* Ani;
+	bool changeAni;
+	int FPS;
+	float SPEED;
+};
+
+class Enemy : public GameObject
+{
+protected:
+
+	info en;
+
+
 public:
 	Enemy();
 	~Enemy();
+	virtual HRESULT init();
+	virtual HRESULT init(POINT pos, int FPS, float SPEED);
+	virtual void release();
+	virtual void update();
+	virtual void render();
+	
+
 };
 

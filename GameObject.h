@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include"gameNode.h"
 class GameObject
 {
 private:
@@ -17,6 +17,7 @@ public:
 
 	virtual void update();
 	virtual HRESULT init();
+	virtual HRESULT init(POINT pos, int FPS, float SPEED);
 	void setFrame(frameImage fm) { _frame = fm; }
 	frameImage getFrame() { return _frame; }
 

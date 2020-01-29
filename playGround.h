@@ -3,6 +3,8 @@
 #include"LoadingScene.h"
 #include"StageOneScene.h"
 #include"StageTwoScene.h"
+#include "EnemyManager.h"
+
 #ifdef UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
 #else
@@ -15,6 +17,8 @@
 class playGround : public gameNode
 {
 private:
+
+	EnemyManager* _em;
 
 
 public:
