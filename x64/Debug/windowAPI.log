@@ -1,0 +1,69 @@
+﻿  stdafx.cpp
+c:\users\kga-16\desktop\teampro\tilemap.h(185): warning C4244: 'return': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\tilemap.h(186): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\tilemap.h(188): warning C4244: 'return': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\tilemap.h(189): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  action.cpp
+  animation.cpp
+  BasicScene.cpp
+  button.cpp
+c:\users\kga-16\desktop\teampro\button.cpp(20): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\button.cpp(21): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  effect.cpp
+  effectManager.cpp
+  Flower.cpp
+  gameNode.cpp
+c:\users\kga-16\desktop\teampro\gamenode.cpp(133): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\gamenode.cpp(134): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\gamenode.cpp(104): warning C4101: 'hdc' :참조되지 않은 지역 변수입니다.
+c:\users\kga-16\desktop\teampro\gamenode.cpp(103): warning C4101: 'ps' :참조되지 않은 지역 변수입니다.
+  GameObject.cpp
+  Hydra.cpp
+  image.cpp
+c:\users\kga-16\desktop\teampro\image.cpp(127): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\image.cpp(186): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\image.cpp(243): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\image.cpp(313): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\image.cpp(312): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\image.cpp(326): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\image.cpp(536): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\image.cpp(543): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  imageManager.cpp
+  keyAniManager.cpp
+  keyManager.cpp
+  LoadingScene.cpp
+  PathFinder.cpp
+c:\users\kga-16\desktop\teampro\pathfinder.cpp(111): warning C4244: '인수': 'long'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\pathfinder.cpp(175): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  playGround.cpp
+  progressBar.cpp
+c:\users\kga-16\desktop\teampro\progressbar.cpp(19): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\progressbar.cpp(25): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\progressbar.cpp(39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\progressbar.cpp(47): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\progressbar.cpp(53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\progressbar.cpp(52): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Rabbit.cpp
+  sceneManager.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Slime.cpp
+  soundManager.cpp
+  StageOneScene.cpp
+  StageTwoScene.cpp
+  TileMap.cpp
+c:\users\kga-16\desktop\teampro\tilemap.cpp(27): warning C4244: '초기화 중': 'std::streamoff'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  timeManager.cpp
+c:\users\kga-16\desktop\teampro\timemanager.cpp(48): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\timemanager.cpp(51): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga-16\desktop\teampro\timemanager.cpp(54): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  timer.cpp
+c:\users\kga-16\desktop\teampro\timer.cpp(61): warning C4244: '=': 'float'에서 'unsigned long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  txtData.cpp
+  utils.cpp
+  Warrior.cpp
+  windowAPI.cpp
+c:\users\kga-16\desktop\teampro\windowapi.cpp(95): warning C4244: 'return': 'WPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+c:\users\kga-16\desktop\teampro\txtdata.cpp(54): warning C4172: 지역 변수 또는 임시: str의 주소를 반환하고 있습니다.
+LINK : fatal error LNK1104: 'lib/fmodex64_vc.lib' 파일을 열 수 없습니다.
