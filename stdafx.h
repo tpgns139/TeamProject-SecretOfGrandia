@@ -35,7 +35,7 @@ using namespace SEVENTEEN_UTIL;
 //=========================================
 
 #define WINNAME (LPCTSTR)(TEXT("SevenTeen Class"))
-#define WINSTARTX 2000
+#define WINSTARTX 50
 #define WINSTARTY 50
 #define WINSIZEX 1100
 #define WINSIZEY 1200

@@ -1,47 +1,39 @@
 #pragma once
-#include "gameNode.h"
-#include "minion.h"
-#include "bullets.h"
 #include <vector>
+#include "gameNode.h"
+#include "Enemy.h"
+#include "Rabbit.h"
+#include "Slime.h"
+#include "Flower.h"
+#include "Boss_W.h"
 
-//헤더파일 꼬임방지를 위한 클래스 전방선언
-class spaceShip;
 
-class enemyManager : public gameNode
+class EnemyManager : public gameNode
 {
 private:
-	typedef vector<enemy*>				vEnemy;
-	typedef vector<enemy*>::iterator	viEnemy;
+	typedef vector<Enemy*>				vEnemy;
+	typedef vector<Enemy*>::iterator	viEnemy;
 
 private:
-	vEnemy _vMinion;
-	viEnemy _viMinion;
+	vEnemy _vEm;
+	viEnemy _viEm;
+	Enemy* En;
 
-	bullet* _bullet;
-	spaceShip* _ship;
+
 
 public:
-	enemyManager();
-	~enemyManager();
+	EnemyManager();
+	~EnemyManager();
 
-	HRESULT init();
-	void release();
-	void update();
-	void render();
+	virtual HRESULT init();
+	virtual void release();
+	virtual void update();
+	virtual void render();
+	void setEnemy(); //에너미 세팅
 
-	//미니언 셋팅 함수
-	void setMinion();
 
-	//미니언 총알 발사 명령 함수
-	void minionBulletFire();
 
-	void removeMinion(int arrNum);
-
-	void collision();
-
-	void setSpaceShipMemoryAddressLink(spaceShip* ship) { _ship = ship; }
-
-	vector<enemy*> getVMinion() { return _vMinion; }
-	vector<enemy*>::iterator getViMinion() { return _viMinion; }
 };
+
+
 
