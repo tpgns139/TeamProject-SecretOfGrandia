@@ -151,35 +151,26 @@
     <ClInclude Include="animation.h" />
     <ClInclude Include="BasicScene.h" />
     <ClInclude Include="button.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyManager.h" />
-    <ClInclude Include="Flower.h" />
     <ClInclude Include="gameNode.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Hydra.h" />
-    <ClInclude Include="Hydra_F.h" />
-    <ClInclude Include="Hydra_S.h" />
-    <ClInclude Include="Hydra_W.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="keyAniManager.h" />
     <ClInclude Include="keyManager.h" />
-    <ClInclude Include="LoadingScene.h" />
+    <ClInclude Include="MapToolScene.h" />
     <ClInclude Include="PathFinder.h" />
     <ClInclude Include="playGround.h" />
     <ClInclude Include="progressBar.h" />
-    <ClInclude Include="Rabbit.h" />
     <ClInclude Include="randomFunction.h" />
+    <ClInclude Include="Render.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="singletonBase.h" />
-    <ClInclude Include="Slime.h" />
     <ClInclude Include="soundManager.h" />
-    <ClInclude Include="StageOneScene.h" />
-    <ClInclude Include="StageTwoScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TileMap.h" />
@@ -187,7 +178,6 @@
     <ClInclude Include="timer.h" />
     <ClInclude Include="txtData.h" />
     <ClInclude Include="utils.h" />
-    <ClInclude Include="Warrior.h" />
     <ClInclude Include="windowAPI.h" />
   </ItemGroup>
   <ItemGroup>
@@ -195,31 +185,22 @@
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="BasicScene.cpp" />
     <ClCompile Include="button.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyManager.cpp" />
-    <ClCompile Include="Flower.cpp" />
     <ClCompile Include="gameNode.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Hydra.cpp" />
-    <ClCompile Include="Hydra_F.cpp" />
-    <ClCompile Include="Hydra_S.cpp" />
-    <ClCompile Include="Hydra_W.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="keyAniManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
-    <ClCompile Include="LoadingScene.cpp" />
+    <ClCompile Include="MapToolScene.cpp" />
     <ClCompile Include="PathFinder.cpp" />
     <ClCompile Include="playGround.cpp" />
     <ClCompile Include="progressBar.cpp" />
-    <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="Render.cpp" />
     <ClCompile Include="sceneManager.cpp" />
-    <ClCompile Include="Slime.cpp" />
     <ClCompile Include="soundManager.cpp" />
-    <ClCompile Include="StageOneScene.cpp" />
-    <ClCompile Include="StageTwoScene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -231,7 +212,6 @@
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="txtData.cpp" />
     <ClCompile Include="utils.cpp" />
-    <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="windowAPI.cpp" />
   </ItemGroup>
   <ItemGroup>

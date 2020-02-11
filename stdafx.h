@@ -1,5 +1,6 @@
 ﻿#pragma once
-
+#pragma comment(lib,"d2d1.lib")
+#pragma comment(lib,"WindowsCodecs.lib")
 #include "targetver.h"
 
 #define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
@@ -13,6 +14,13 @@
 #include <tchar.h>
 #include <iostream>
 
+#include<wincodec.h>
+#include<d2d1.h>
+#include<d2d1helper.h>
+#include<assert.h>
+#include<dwrite.h>
+
+#include<unordered_map>
 using namespace std;
 
 #include "commonMacroFunction.h"
@@ -28,6 +36,9 @@ using namespace std;
 #include "keyAniManager.h"
 #include "TileMap.h"
 #include"PathFinder.h"
+#include"Render.h"
+#include"Camera.h"
+
 using namespace SEVENTEEN_UTIL;
 
 //=========================================
@@ -53,7 +64,8 @@ using namespace SEVENTEEN_UTIL;
 #define KEYANIMANAGER keyAniManager::getSingleton()
 #define TILEMANAGER TileMap::getSingleton()
 #define PATHFINDER PathFinder::getSingleton()
-
+#define RENDER		Render::getSingleton()
+#define CAMERA		Camera::getSingleton()
 #define SAFE_DELETE(p) {if(p) {delete(p); (p)=NULL;}}
 #define SAFE_RELEASE(p) {if(p) {(p)->release(); (p) = NULL;}}
 #define SAFE_DELETE_ARRAY(p) {if(p) { delete[](p); (p) = NULL;}}
@@ -65,3 +77,14 @@ extern HINSTANCE	_hInstance;
 extern HWND			_hWnd;
 extern POINT		_ptMouse;
 extern BOOL			_leftButtonDown;
+
+
+template <typename T>
+inline void SafeRelease(T *&p)
+{
+	if (NULL != p)
+	{
+		p->Release();
+		p = NULL;
+	}
+}

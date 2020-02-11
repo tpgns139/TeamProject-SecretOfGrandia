@@ -67,14 +67,8 @@
     <Filter Include="playGround\Object">
       <UniqueIdentifier>{4c78229b-9d5e-4105-9d5e-01e03bb88952}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\Object\Enemy">
-      <UniqueIdentifier>{1a850b73-0ecb-4884-918a-a25e9a8f6c58}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\Object\Player">
-      <UniqueIdentifier>{eb01cde9-82dc-470c-bd7a-24c3e893c13a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\Object\Enemy\Boss">
-      <UniqueIdentifier>{badf279a-5e9f-4ea0-b749-45605baf27b4}</UniqueIdentifier>
+    <Filter Include="2DGameFramework\Camera">
+      <UniqueIdentifier>{91d738e0-fdb1-4af6-9389-3c602bdaf9b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,50 +153,20 @@
     <ClInclude Include="PathFinder.h">
       <Filter>2DGameFramework\PathFinder</Filter>
     </ClInclude>
-    <ClInclude Include="StageOneScene.h">
-      <Filter>playGround\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadingScene.h">
-      <Filter>playGround\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>playGround\Object</Filter>
     </ClInclude>
     <ClInclude Include="BasicScene.h">
       <Filter>playGround\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Hydra.h">
-      <Filter>playGround\Object\Enemy</Filter>
+    <ClInclude Include="Render.h">
+      <Filter>2DGameFramework\image</Filter>
     </ClInclude>
-    <ClInclude Include="Rabbit.h">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Warrior.h">
-      <Filter>playGround\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Flower.h">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Slime.h">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="StageTwoScene.h">
+    <ClInclude Include="MapToolScene.h">
       <Filter>playGround\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Hydra_F.h">
-      <Filter>playGround\Object\Enemy\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Hydra_S.h">
-      <Filter>playGround\Object\Enemy\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Hydra_W.h">
-      <Filter>playGround\Object\Enemy\Boss</Filter>
+    <ClInclude Include="Camera.h">
+      <Filter>2DGameFramework\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -272,50 +236,20 @@
     <ClCompile Include="PathFinder.cpp">
       <Filter>2DGameFramework\PathFinder</Filter>
     </ClCompile>
-    <ClCompile Include="LoadingScene.cpp">
-      <Filter>playGround\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="StageOneScene.cpp">
-      <Filter>playGround\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>playGround\Object</Filter>
     </ClCompile>
     <ClCompile Include="BasicScene.cpp">
       <Filter>playGround\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Hydra.cpp">
-      <Filter>playGround\Object\Enemy</Filter>
+    <ClCompile Include="Render.cpp">
+      <Filter>2DGameFramework\image</Filter>
     </ClCompile>
-    <ClCompile Include="Rabbit.cpp">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Warrior.cpp">
-      <Filter>playGround\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Flower.cpp">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Slime.cpp">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="StageTwoScene.cpp">
+    <ClCompile Include="MapToolScene.cpp">
       <Filter>playGround\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>playGround\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Hydra_F.cpp">
-      <Filter>playGround\Object\Enemy\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="Hydra_S.cpp">
-      <Filter>playGround\Object\Enemy\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="Hydra_W.cpp">
-      <Filter>playGround\Object\Enemy\Boss</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>2DGameFramework\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

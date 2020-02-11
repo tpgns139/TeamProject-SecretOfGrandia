@@ -18,8 +18,8 @@ HRESULT progressBar::init(float x, float y, int width, int height)
 
 	_rcProgress = RectMake(x, y, width, height);
 
-	_progressBarTop = IMAGEMANAGER->addImage("frontBar", "hpBarTop.bmp", width, height, true, RGB(255, 0, 255));
-	_progressBarBottom = IMAGEMANAGER->addImage("backBar", "hpBarBottom.bmp", width, height, true, RGB(255, 0, 255));
+	_progressBarTop = IMAGEMANAGER->addImage("frontBar", "hpBarTop.bmp", width,height);
+	_progressBarBottom = IMAGEMANAGER->addImage("backBar", "hpBarBottom.bmp",width,height);
 
 	//뒤에 깔리는 게이지의 가로크기를 기준으로 삼는다
 	_width = _progressBarBottom->getWidth();
@@ -42,15 +42,13 @@ void progressBar::update()
 
 void progressBar::render()
 {
-	IMAGEMANAGER->render("backBar", getMemDC(),
+	IMAGEMANAGER->findImage("backBar")->render(
 		_rcProgress.left + _progressBarBottom->getWidth() / 2,
-		_y + _progressBarBottom->getHeight() / 2, 0, 0,
-		_progressBarBottom->getWidth(), _progressBarBottom->getHeight());
+		_y + _progressBarBottom->getHeight() / 2);
 
-	IMAGEMANAGER->render("frontBar", getMemDC(),
+	IMAGEMANAGER->findImage("frontBar")->render(
 		_rcProgress.left + _progressBarBottom->getWidth() / 2,
-		_y + _progressBarBottom->getHeight() / 2, 0, 0,
-		_width, _progressBarBottom->getHeight());
+		_y + _progressBarBottom->getHeight() / 2);
 
 
 }

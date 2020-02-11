@@ -33,7 +33,11 @@ inline RECT RectMakeCenter(int centerX, int centerY, int width, int height)
 	return rc;
 }
 
-
+inline RECT RectMakeD2D1Rect(D2D1_RECT_F rect)
+{
+	RECT rc = {rect.left,rect.top,rect.right,rect.bottom};
+	return rc;
+}
 //============== 사 각 형 =====================
 //       Left, Top을 기준(그려줄DC, Left, Top, 가로크기, 세로크기)
 inline void RectangleMake(HDC hdc, int x, int y, int width, int height)

@@ -1,9 +1,6 @@
 #pragma once
 #include "image.h"
 #include "TileMap.h"
-#include"GameObject.h"
-//백버퍼는 어차피 한개만 있으면 되니 전역으로 빼봅시당
-static image* _backBuffer = IMAGEMANAGER->addImage("backBuffer", WINSIZEX, WINSIZEY);
 
 
 
@@ -33,10 +30,6 @@ public:
 	virtual void save();
 	virtual void load();
 	virtual void setGameObj(OBJSTRUCT obj);
-
-	//백버퍼의 DC메모리 영역 접근자
-	HDC getMemDC() { return _backBuffer->getMemDC(); }
-	HDC getHDC() { return _hdc; }
 
 	LRESULT MainProc(HWND, UINT, WPARAM, LPARAM);
 

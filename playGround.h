@@ -1,9 +1,6 @@
 #pragma once
 #include "gameNode.h"
-#include"LoadingScene.h"
-#include"StageOneScene.h"
-#include"StageTwoScene.h"
-#include "EnemyManager.h"
+#include"MapToolScene.h"
 
 #ifdef UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
@@ -18,7 +15,6 @@ class playGround : public gameNode
 {
 private:
 
-	EnemyManager* _em;
 
 
 public:
