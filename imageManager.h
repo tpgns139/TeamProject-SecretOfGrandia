@@ -13,8 +13,7 @@ public:
 	HRESULT init();
 
 	virtual void release();
-	image* addImage(std::string key, std::string path, float sizeX, float sizeY);
-	image* addFrameImage(std::string key, std::string path, int maxFrameX, int maxFrameY, float sizeX, float sizeY);
+	image* addImage(std::string key, std::string path);
 	image* findImage(std::string key);
 };
 

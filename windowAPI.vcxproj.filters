@@ -168,6 +168,12 @@
     <ClInclude Include="Camera.h">
       <Filter>2DGameFramework\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="tagTile.h">
+      <Filter>playGround\MapManager\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleTile.h">
+      <Filter>playGround\MapManager\Tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -250,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>2DGameFramework\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleTile.cpp">
+      <Filter>playGround\MapManager\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="tagTile.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

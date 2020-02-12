@@ -25,9 +25,9 @@ public:
 	void setFrameHeight(float frameHeight) { _frameHegith = frameHeight; }
 
 
-	void render(float x, float y);
-	void render(float x, float y, float Degree);
-	void UIrender(float x, float y);
+	void render(float x, float y,float sizeX,float sizeY);
+	void render(float x, float y, float Degree, float sizeX, float sizeY);
+	void UIrender(float x, float y, float sizeX, float sizeY);
 
 	float getWidth() { return _width; }
 	float getHeight() { return _height; }
@@ -36,8 +36,8 @@ public:
 	float getFrameHeight() { return _frameHegith; }
 
 
-	void frameRender(float x, float y,  int frameX, int frameY);
-	void frameRender(float x, float y,  float Degree, int frameX, int frameY);
+	void frameRender(float x, float y,  int frameX, int frameY, float sizeX, float sizeY);
+	void frameRender(float x, float y,  float Degree, int frameX, int frameY, float sizeX, float sizeY);
 
 	float getX() { return 0; }
 	void setX(float X){}

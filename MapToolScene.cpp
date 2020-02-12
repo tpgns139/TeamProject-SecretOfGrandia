@@ -13,8 +13,8 @@ MapToolScene::~MapToolScene()
 
 HRESULT MapToolScene::init()
 {
-	IMAGEMANAGER->addImage("map", "img/Tile/autumn_Tile.png", 200, 200);
-	_buttonMap.insert(make_pair("TileMap", IMAGEMANAGER->addImage("TileButton", "img/TileButton/BT_Ground.png", 50, 50)));
+	TILEMANAGER->init();
+	_buttonMap.insert(make_pair("TileMap", IMAGEMANAGER->addImage("TileButton", "img/TileButton/BT_Ground.png" )));
 	return S_OK;
 }
 
@@ -40,21 +40,25 @@ void MapToolScene::update()
 	{
 		if (PtInRect((&IMAGEMANAGER->findImage("TileButton")->getRect()), _ptMouse))
 		{
-			cout << "ptinrect!!" << endl;
+			TILEMANAGER->setCTRL(CTRL_TERRAINDRAW);
+
 		}
 	}
-
+	TILEMANAGER->update();
 
 
 }
 
 void MapToolScene::render()
 {
+	//Å¸ÀÏ Âï±â
+	TILEMANAGER->render();
+
 	//buttonÂï±â
 	int i = 0;
 	for (_buttonMapIter =_buttonMap.begin();_buttonMapIter != _buttonMap.end();_buttonMapIter++)
 	{
-		_buttonMapIter->second->UIrender(25 + 50 * i, 25);
+		_buttonMapIter->second->UIrender(25 + 50 * i, 25,50,50);
 		i++;
 	}
 }

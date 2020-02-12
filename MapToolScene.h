@@ -1,6 +1,5 @@
 #pragma once
 #include"BasicScene.h"
-
 class MapToolScene:public BasicScene
 {
 private:

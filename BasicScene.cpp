@@ -10,7 +10,6 @@ void BasicScene::setGameObj(OBJSTRUCT obj)
 
 void BasicScene::settingObj(GameObject* ins, OBJSTRUCT obj)
 {
-	
 	_gameObj.push_back(ins);
 }
 
