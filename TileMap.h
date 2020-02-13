@@ -40,7 +40,7 @@ struct OBJSTRUCT
 	frameImage frame;
 };
 //TileManger
-typedef unordered_map<string, SampleTile*> sampleMap;
+typedef map<string, SampleTile*> sampleMap;
 class TileMap :public singletonBase<TileMap>
 {
 private:
@@ -49,7 +49,11 @@ private:
 	char*					token;	//파일 맵 로드를 위한 토큰
 	CTRL					_crtl;
 	unordered_map<string, sampleMap*> _sampleTile;
+	unordered_map<string, tagTile>					_ins;
 	tagCurrentTile*			_currentTile;
+	SampleTile*				_currentSampleTile;
+
+	int _tileAmount;
 public:
 	HRESULT init();
 	void release();
@@ -75,5 +79,6 @@ public:
 	void setCurrentTile(TYPE _type, int indexX, int indexY);
 
 	void setSampleTile(image* image);
+	void save();
 };
 

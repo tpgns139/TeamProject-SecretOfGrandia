@@ -1,5 +1,5 @@
 #pragma once
-#define TILESIZE 32 // 타일사이즈 
+#define TILESIZE 64 // 타일사이즈 
 
 //타일 갯수는 가로 20 / 세로 20
 #define TILEX 30 // 타일 갯수
@@ -17,7 +17,8 @@ enum frameImage
 enum attribute
 {
 	nonBlocking,
-	blocking
+	blocking,
+	notJump
 };
 
 enum TYPE

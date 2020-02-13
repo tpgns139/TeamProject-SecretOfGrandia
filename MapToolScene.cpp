@@ -15,6 +15,7 @@ HRESULT MapToolScene::init()
 {
 	TILEMANAGER->init();
 	_buttonMap.insert(make_pair("TileMap", IMAGEMANAGER->addImage("TileButton", "img/TileButton/BT_Ground.png" )));
+	_buttonMap.insert(make_pair("TileErase", IMAGEMANAGER->addImage("TileErase", "img/TileButton/BT_Ground.png")));
 	return S_OK;
 }
 
@@ -41,6 +42,11 @@ void MapToolScene::update()
 		if (PtInRect((&IMAGEMANAGER->findImage("TileButton")->getRect()), _ptMouse))
 		{
 			TILEMANAGER->setCTRL(CTRL_TERRAINDRAW);
+
+		}
+		if (PtInRect((&IMAGEMANAGER->findImage("TileErase")->getRect()), _ptMouse))
+		{
+			TILEMANAGER->setCTRL(CTRL_ERASER);
 
 		}
 	}
