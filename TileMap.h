@@ -23,6 +23,7 @@ enum CTRL
 	CTRL_ERASER,		//지우개 버튼 (잘못찍은 오브젝트등을 지움지움)
 	CTRL_COL,
 	CTRL_COLERASE,
+	CTRL_NOTJUMP,
 	CTRL_NONE
 };
 //현재 타일 == 내가 클릭한 현재타일 정보를 저장할 구조체
@@ -53,6 +54,10 @@ private:
 	tagCurrentTile*			_currentTile;
 	SampleTile*				_currentSampleTile;
 
+
+	bool showRect,showCol;
+	float tileSize;
+
 	int _tileAmount;
 public:
 	HRESULT init();
@@ -60,18 +65,21 @@ public:
 	std::ifstream::pos_type filesize(const char* filename);
 
 	virtual void loadObj(string FileName, string StageName);
-	vector<tagTile*> load(string FileName);
+	
 	vector<tagTile*> getTotalTile() { return _tiles; }
 
-	POINT getIndex(POINT centerPos) 
+	POINT getIndex(POINT centerPos, float tileSize)
 	{
-		POINT ins = { centerPos.x / TILESIZE,centerPos.y / TILESIZE };
+		POINT ins = { centerPos.x / tileSize,centerPos.y / tileSize };
 		return ins;
 	}
 	void setCTRL(CTRL ins) { _crtl = ins; }
+	
+	void setShowCol(bool check) { showCol = check; }
+	void setShowRect(bool check) { showRect = check; }
 	CTRL getCTRL() { return _crtl; }
 	void update();
-
+	void Start();
 	void render();
 	TileMap();
 	~TileMap();
@@ -80,5 +88,8 @@ public:
 
 	void setSampleTile(image* image);
 	void save();
+
+	void load(string FileName);
+	void load();
 };
 

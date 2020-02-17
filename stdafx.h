@@ -38,6 +38,7 @@ using namespace std;
 #include"PathFinder.h"
 #include"Render.h"
 #include"Camera.h"
+#include"PlayerManager.h"
 
 using namespace SEVENTEEN_UTIL;
 
@@ -48,8 +49,8 @@ using namespace SEVENTEEN_UTIL;
 #define WINNAME (LPCTSTR)(TEXT("SevenTeen Class"))
 #define WINSTARTX 50
 #define WINSTARTY 50
-#define WINSIZEX 1100
-#define WINSIZEY 1200
+#define WINSIZEX 1600
+#define WINSIZEY 620
 #define WINSTYLE WS_CAPTION | WS_SYSMENU
 
 #define RND randomFunction::getSingleton()
@@ -66,6 +67,7 @@ using namespace SEVENTEEN_UTIL;
 #define PATHFINDER PathFinder::getSingleton()
 #define RENDER		Render::getSingleton()
 #define CAMERA		Camera::getSingleton()
+#define PLAYERMANAGER	PlayerManager::getSingleton()
 #define SAFE_DELETE(p) {if(p) {delete(p); (p)=NULL;}}
 #define SAFE_RELEASE(p) {if(p) {(p)->release(); (p) = NULL;}}
 #define SAFE_DELETE_ARRAY(p) {if(p) { delete[](p); (p) = NULL;}}

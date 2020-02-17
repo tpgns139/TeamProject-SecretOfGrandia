@@ -1,5 +1,6 @@
 #pragma once
 #include"BasicScene.h"
+#define TILESIZE 16
 class MapToolScene:public BasicScene
 {
 private:
@@ -9,7 +10,8 @@ public:
 	MapToolScene();
 	~MapToolScene();
 
-	HRESULT init();
+	virtual HRESULT init();
+	virtual void Start();
 	virtual void update();
 	virtual void render();
 };

@@ -22,6 +22,7 @@ public:
 	virtual HRESULT init();			//초기화 전용 함수
 	virtual HRESULT init(bool managerInit);
 	virtual void release();			//메모리 해제 함수
+	virtual void Start();
 	virtual void update();			//연산 전용 함수
 	virtual void render();			//그리기 전용 함수
 
@@ -30,7 +31,7 @@ public:
 	virtual void save();
 	virtual void load();
 	virtual void setGameObj(OBJSTRUCT obj);
-
+	virtual float getTileSize();
 	LRESULT MainProc(HWND, UINT, WPARAM, LPARAM);
 
 };

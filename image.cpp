@@ -10,10 +10,10 @@ image::image()
 image::~image()
 {
 }
-//					뿌릴 x위치,뿌릴 y위치,너비,높이
+//					뿌릴 중심x위치,뿌릴 중심y위치,너비,높이
 void image::render(float x, float y, float sizeX, float sizeY)
 {
-	::D2D1_RECT_F dxArea = ::D2D1::RectF(-sizeX * 0.5f, -sizeY * 0.5f, _width * 0.5f, _height * 0.5f);
+	::D2D1_RECT_F dxArea = ::D2D1::RectF(-sizeX * 0.5f, -sizeY * 0.5f, sizeX * 0.5f, sizeY * 0.5f);
 	
 	using namespace D2D1;
 	Matrix3x2F trans = Matrix3x2F::Translation(x , y);

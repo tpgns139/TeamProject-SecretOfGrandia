@@ -2,8 +2,8 @@
 #define TILESIZE 64 // 타일사이즈 
 
 //타일 갯수는 가로 20 / 세로 20
-#define TILEX 30 // 타일 갯수
-#define TILEY 30
+#define TILEX 100 // 타일 갯수
+#define TILEY 100
 
 //타일 총 사이즈는 640 X 640
 #define TILESIZEX TILESIZE * TILEX

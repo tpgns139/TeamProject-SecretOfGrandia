@@ -1,6 +1,7 @@
 #pragma once
 #include "gameNode.h"
 #include"MapToolScene.h"
+#include"StageOne.h"
 
 #ifdef UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")

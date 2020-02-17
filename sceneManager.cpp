@@ -80,7 +80,8 @@ HRESULT sceneManager::changeScene(string sceneName)
 
 		//현재 씬에 바꾸려는 씬을 담는다
 		_currentScene = find->second;
-
+		_currentScene->Start();
+		TILEMANAGER->Start();
 		return S_OK;
 	}
 

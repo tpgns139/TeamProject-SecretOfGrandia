@@ -35,10 +35,13 @@ HRESULT gameNode::init(bool managerInit)
 		TIMEMANAGER->init();
 		EFFECTMANAGER->init();
 		SOUNDMANAGER->init();
+		
 		SCENEMANAGER->init();
 		KEYANIMANAGER->init();
 		CAMERA->init();
 		RENDER->initRenderTager(_hWnd);
+		TILEMANAGER->init();
+		PLAYERMANAGER->init();
 	}
 
 	return S_OK;
@@ -74,6 +77,10 @@ void gameNode::release()
 	ReleaseDC(_hWnd, _hdc);
 }
 
+void gameNode::Start()
+{
+}
+
 void gameNode::update()
 {
 	InvalidateRect(_hWnd, NULL, false);
@@ -99,6 +106,11 @@ void gameNode::load()
 
 void gameNode::setGameObj(OBJSTRUCT obj)
 {
+}
+
+float gameNode::getTileSize()
+{
+	return 0.0f;
 }
 
 LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)

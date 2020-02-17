@@ -17,6 +17,7 @@ HRESULT playGround::init()
 	gameNode::init(true);
 
 	SCENEMANAGER->addScene("maptoolScene", new MapToolScene);
+	SCENEMANAGER->addScene("stageOne", new StageOne);
 	SCENEMANAGER->changeScene("maptoolScene");
 
 
@@ -37,6 +38,10 @@ void playGround::update()
 {
 	gameNode::update();
 	SCENEMANAGER->update();
+	if (KEYMANAGER->isOnceKeyDown(VK_F2))
+	{
+		SCENEMANAGER->changeScene("stageOne");
+	}
 }
 
 
