@@ -47,6 +47,6 @@ void SampleTile::render()
 	_img->UIrender(WINSIZEX-maxIdX*_sizeX / 2, maxIdY*_sizeY / 2, maxIdX*_sizeX, maxIdY*_sizeY);
 	for (int i = 0;i < _rect.size();i++)
 	{
-		RENDER->Rectangle(D2D1::RectF(_rect[i].left, _rect[i].top, _rect[i].right, _rect[i].bottom), D2D1::ColorF(D2D1::ColorF::Black));
+		RENDER->Rectangle(_rect[i], D2D1::ColorF(D2D1::ColorF::Black));
 	}
 }

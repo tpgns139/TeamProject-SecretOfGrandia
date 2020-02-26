@@ -56,13 +56,14 @@ void Render::initRenderTager(HWND hWnd)
 	createRenderTarget(hWnd);
 }
 
-void Render::Rectangle(D2D1_RECT_F rc, D2D1_COLOR_F color, bool fill)
+void Render::Rectangle(RECT rc, D2D1_COLOR_F color, bool fill)
 {
 	ID2D1SolidColorBrush *brush = 0;
+	D2D1_RECT_F _relativeRect = { rc.left-CAMERA->getCameraX(),rc.top-CAMERA->getCameraY(),rc.right - CAMERA->getCameraX(),rc.bottom - CAMERA->getCameraY() };
 	_D2DRenderTaget->CreateSolidColorBrush(color, &brush);
-	_D2DRenderTaget->DrawRectangle(rc, brush);
+	_D2DRenderTaget->DrawRectangle(_relativeRect, brush);
 	if(fill)
-	_D2DRenderTaget->FillRectangle(rc, brush);
+	_D2DRenderTaget->FillRectangle(_relativeRect, brush);
 	_D2DRenderTaget->SetTransform(D2D1::Matrix3x2F::Identity());
 	SafeRelease(brush);
 }

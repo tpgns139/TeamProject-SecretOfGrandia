@@ -18,7 +18,8 @@ public:
 	virtual HRESULT init();
 	virtual void Start();
 	virtual void setGameObj(OBJSTRUCT obj);
-	void settingObj(GameObject* ins, OBJSTRUCT obj);
+	void settingObj(GameObject* ins);
+	void eraseObject(GameObject* ins);
 	virtual void update();
 	virtual void render();
 	float getTileSize();

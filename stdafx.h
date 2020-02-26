@@ -39,6 +39,7 @@ using namespace std;
 #include"Render.h"
 #include"Camera.h"
 #include"PlayerManager.h"
+#include"enemyManager.h"
 
 using namespace SEVENTEEN_UTIL;
 
@@ -67,6 +68,7 @@ using namespace SEVENTEEN_UTIL;
 #define PATHFINDER PathFinder::getSingleton()
 #define RENDER		Render::getSingleton()
 #define CAMERA		Camera::getSingleton()
+#define	ENEMYMANAGER	EnemyManager::getSingleton()
 #define PLAYERMANAGER	PlayerManager::getSingleton()
 #define SAFE_DELETE(p) {if(p) {delete(p); (p)=NULL;}}
 #define SAFE_RELEASE(p) {if(p) {(p)->release(); (p) = NULL;}}

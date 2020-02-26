@@ -23,6 +23,8 @@ HRESULT MapToolScene::init()
 
 	IMAGEMANAGER->addImage("Tutorial_backGroundOne", "img/BackGround/tutorial_BG_0.png");
 
+
+	
 	return S_OK;
 }
 

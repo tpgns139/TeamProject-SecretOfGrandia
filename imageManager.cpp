@@ -71,6 +71,9 @@ image * imageManager::addFrameImage(std::string key, std::string path, int maxFr
 	_image->setImage(bitmap);
 	_image->setMaxFrameX(maxFrameX);
 	_image->setMaxFrameY(maxFrameY);
+	_image->setFrameHeight(bitmap->GetSize().height / maxFrameY);
+	_image->setFrameWidth(bitmap->GetSize().width / maxFrameX);
+
 	_imageMap.insert(std::make_pair(key, _image));
 	return _image;
 }

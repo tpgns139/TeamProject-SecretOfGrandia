@@ -20,21 +20,13 @@ void EnemyManager::release()
 {
 }
 
-void EnemyManager::update()
-{
-	KEYANIMANAGER->update();
-
-
-	for (int i = 0;i < _vEm.size();i++)
-	{
-		_vEm[i]->update();
-	}
-}
 
 void EnemyManager::setEnemy(Enemy* enemy)
 {
 	_vEm.push_back(enemy);
 }
 
-
+void EnemyManager::eraseEnemy(int idx)
+{
+}
 

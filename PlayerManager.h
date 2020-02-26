@@ -4,15 +4,16 @@
 class PlayerManager:public singletonBase<PlayerManager>
 {
 private:
-	unordered_map<string, Player*> _player;
-	unordered_map<string, Player*>::iterator _iplayer;
+	map<string, Player*> _player;
+	map<string, Player*>::iterator _iplayer;
 public:
 	PlayerManager();
 	~PlayerManager();
 
-	HRESULT init();
+	void Start();
 	void update();
 	void addPlayer(string name, Player* player) { _player.insert(make_pair(name, player)); }
+	void erasePlayer(GameObject* ins);
 	Player* findPlayer(string name);
 };
 

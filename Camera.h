@@ -10,8 +10,8 @@ public:
 	HRESULT init();
 	float getCameraX() { return _posX; }
 	float getCameraY() { return _posY; }
-	void setCameraX(float x) { _posX = x; }
-	void setCameraY(float y) { _posY = y; }
+	void setCameraX(float x) ;
+	void setCameraY(float y) ;
 	
 };
 

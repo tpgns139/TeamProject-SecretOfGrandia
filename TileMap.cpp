@@ -39,7 +39,11 @@ HRESULT TileMap::init()
 
 void TileMap::release()
 {
-
+	for (int i = 0; i < _tiles.size(); i++)
+	{
+		SAFE_DELETE(_tiles[i]);
+	}
+	SAFE_DELETE(_currentTile);
 }
 
 void TileMap::Start()
@@ -149,9 +153,9 @@ void TileMap::render()
 					_tiles[i * 100 + j]->getCenterY() - CAMERA->getCameraY(),
 					tileSize,
 					tileSize);
-				if (showRect) 
+				if (showRect)
 				{
-					RENDER->Rectangle(D2D1::RectF(ins.left, ins.top, ins.right, ins.bottom), D2D1::ColorF(D2D1::ColorF::Black));
+					//RENDER->Rectangle(D2D1::RectF(ins.left, ins.top, ins.right, ins.bottom), D2D1::ColorF(D2D1::ColorF::Black));
 				}
 				if (_tiles[i * 100 + j]->getType() == TYPE_TERRAIN) 
 				{
@@ -162,6 +166,7 @@ void TileMap::render()
 						tileSize,
 						tileSize);
 				}
+				
 				if (showCol)
 				{
 					if (_tiles[i * 100 + j]->getAttribute() == notJump)
@@ -270,7 +275,6 @@ void TileMap::load()
 	}
 	file = CreateFile(token, GENERIC_READ, 0, NULL,
 		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-	cout << filesize(token) << endl;
 	ReadFile(file, ins, sizeof(tagTile) * TILEX * TILEY, &read, NULL);
 	_tiles.clear();
 	for (int i = 0; i < TILEX * TILEY; i++)
@@ -322,6 +326,6 @@ void TileMap::load(string FileName)
 		(*_tiles[i]) = ins[i];
 	
 	}
-
+	
 	CloseHandle(file);
 }

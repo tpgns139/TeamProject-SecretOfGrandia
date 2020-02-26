@@ -70,6 +70,12 @@
     <Filter Include="2DGameFramework\Camera">
       <UniqueIdentifier>{91d738e0-fdb1-4af6-9389-3c602bdaf9b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Object\Player">
+      <UniqueIdentifier>{70d065a9-f104-4675-b76a-109d5ea15090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Object\Enemy">
+      <UniqueIdentifier>{a7faa1aa-b528-466c-a25d-45e7642ba819}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -181,7 +187,19 @@
       <Filter>2DGameFramework\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>playGround\Object</Filter>
+      <Filter>playGround\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SkulHead.h">
+      <Filter>playGround\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Knight.h">
+      <Filter>playGround\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>playGround\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>2DGameFramework\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -279,7 +297,19 @@
       <Filter>2DGameFramework\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>playGround\Object</Filter>
+      <Filter>playGround\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SkulHead.cpp">
+      <Filter>playGround\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Knight.cpp">
+      <Filter>playGround\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>playGround\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>2DGameFramework\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

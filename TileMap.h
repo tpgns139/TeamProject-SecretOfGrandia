@@ -3,6 +3,7 @@
 #include <commdlg.h> //OPENFILENAME을 위한 헤더
 #include"tagTile.h"
 #include"SampleTile.h"
+#include"knight.h"
 enum OBJECT
 {
 	Monster,

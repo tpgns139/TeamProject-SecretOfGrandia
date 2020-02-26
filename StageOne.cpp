@@ -13,6 +13,8 @@ StageOne::~StageOne()
 
 HRESULT StageOne::init()
 {
+	IMAGEMANAGER->addImage("SkulRightHead", "img/Character/Skul/Skul_righthead.png");
+	IMAGEMANAGER->addImage("SkulLeftHead", "img/Character/Skul/Skul_lefthead.png");
 	tileSize = 64;
 	TILEMANAGER->load("Stage/stageOne.txt");
 	return S_OK;
@@ -21,28 +23,22 @@ HRESULT StageOne::init()
 void StageOne::Start()
 {
 
-	TILEMANAGER->setShowRect(true);
+	TILEMANAGER->setShowRect(false);
 	TILEMANAGER->setShowCol(false);
+	PLAYERMANAGER->addPlayer("PlayerOne", new Player);
+	PLAYERMANAGER->findPlayer("PlayerOne")->init();
+	this->settingObj(PLAYERMANAGER->findPlayer("PlayerOne"));
+	GameObject* conEnemy = new knight;
+	((Enemy*)conEnemy)->init(PointMake(1000, 1500));
+	ENEMYMANAGER->setEnemy((Enemy*)conEnemy);
+	this->settingObj(conEnemy);
+
+
 }
 
 void StageOne::update()
 {
-	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
-	{
-		CAMERA->setCameraX(CAMERA->getCameraX() - 5);
-	}
-	if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
-	{
-		CAMERA->setCameraX(CAMERA->getCameraX() + 5);
-	}
-	if (KEYMANAGER->isStayKeyDown(VK_UP))
-	{
-		CAMERA->setCameraY(CAMERA->getCameraY() - 5);
-	}
-	if (KEYMANAGER->isStayKeyDown(VK_DOWN))
-	{
-		CAMERA->setCameraY(CAMERA->getCameraY() + 5);
-	}
+	BasicScene::update();
 }
 
 void StageOne::render()
@@ -50,4 +46,8 @@ void StageOne::render()
 	IMAGEMANAGER->findImage("Tutorial_backGroundOne")->render(1152, 960, 2304, 1920);
 	IMAGEMANAGER->findImage("Tutorial_backGroundOne")->render(3456, 960, 2304, 1920);
 	TILEMANAGER->render();
+	BasicScene::render();
+
+	
+	
 }

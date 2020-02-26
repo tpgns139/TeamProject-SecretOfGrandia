@@ -11,53 +11,30 @@ knight::~knight()
 {
 }
 
-HRESULT knight::init()
+
+HRESULT knight::init(POINT pos)
 {
-	_image = IMAGEMANAGER->addFrameImage("knight", "knight.bmp", 0, 0, 612, 312, 9, 4, true, RGB(255, 0, 255));
-
-	_knightDirection = KNIGHTDIRECTION_RIGHT_STOP;
-
-	_x = WINSIZEX / 2;
-	_y = WINSIZEY / 2;
-
-	_rc = RectMakeCenter(_x, _y, _image->getFrameWidth(),
-		_image->getFrameHeight());
-
-	int rightStop[] = { 0 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightRightStop", "knight", rightStop, 1, 6, true);
-
-	int leftStop[] = { 9 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightLeftStop", "knight", leftStop, 1, 6, true);
-
-	int rightMove[] = { 1,2,3,4,5,6 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightRightMove", "knight", rightMove, 6, 10, true);
-
-	int leftMove[] = { 10, 11, 12, 13, 14, 15 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightLeftMove", "knight", leftMove, 6, 10, true);
-
-	int arrRightAttack[] = { 7, 8 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightRightAttack", "knight", arrRightAttack, 2, 10, false, rightFire, this);
-
-	int arrLeftAttack[] = { 16, 17 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightLeftAttack", "knight", arrLeftAttack, 2, 10, false, leftFire, this);
-
-	int arrRightJump[] = { 22, 24, 25 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightRightJump", "knight", arrRightJump, 3, 4, false, rightJump, this);
-
-	int arrLeftJump[] = { 31, 33, 34 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightLeftJump", "knight", arrLeftJump, 3, 4, false, leftJump, this);
-
-	int arrRightMoveJump[] = { 21, 23 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightRightMoveJump", "knight", arrRightMoveJump, 2, 3, false, rightMoveJump, this);
-
-	int arrLeftMoveJump[] = { 30, 32 };
-	KEYANIMANAGER->addArrayFrameAnimation("knightLeftMoveJump", "knight", arrLeftMoveJump, 2, 3, false, leftMoveJump, this);
+	Enemy::init(pos);
+	insertEnemyImage(E_Knight, E_idle, IMAGEMANAGER->addFrameImage("EnemyKnightIdle", "img/Enemy/Knight/soldier_Idle.png", 5, 2));
+	insertEnemyImage(E_Knight, E_run, IMAGEMANAGER->addFrameImage("EnemyKnightRun", "img/Enemy/Knight/soldier_Run.png", 8, 2));
+	insertEnemyImage(E_Knight, E_attack, IMAGEMANAGER->addFrameImage("EnemyKnightJump", "img/Enemy/Knight/soldier_Attack.png", 5, 2));
+	insertEnemyImage(E_Knight, E_Hit, IMAGEMANAGER->addFrameImage("EnemyKnightHit", "img/Enemy/Knight/soldier_Hit.png", 2, 2));
+	insertEnemyImage(E_Knight, E_attackWait, IMAGEMANAGER->addFrameImage("EnemyKnightHit", "img/Enemy/Knight/attackWait.png", 1, 2));
 
 
-	_knightMotion = KEYANIMANAGER->findAnimation("knightRightStop");
+	_bodyRect.insert(make_pair("checkPlayer", RectMakeCenter(_center.x, _center.y, 100, 100)));
+	_bodyRect.insert(make_pair("attackRange", RectMakeCenter(_center.x, _center.y, 100, 100)));
+	_nowDir = E_RIGHT;
+	_nowPK = E_Knight;
+	_nowPS = E_idle;
+	_xSpeed = 0;
+	_frameTerm = 5;
+	_findPlayer = false;
+	setEnemyImage();
 
-	_jump = new jump;
-	_jump->init();
+
+	_enemyInfo.damage = 10;
+	_enemyInfo.hp = 30;
 
 	return S_OK;
 }
@@ -68,129 +45,278 @@ void knight::release()
 
 void knight::update()
 {
-	if (KEYMANAGER->isOnceKeyDown(VK_RIGHT))
+	if (_findPlayer)
 	{
-		_knightDirection = KNIGHTDIRECTION_RIGHT_MOVE;
-		_knightMotion = KEYANIMANAGER->findAnimation("knightRightMove");
-		_knightMotion->start();
-	}
-	if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
-	{
-		_knightDirection = KNIGHTDIRECTION_RIGHT_STOP;
-		_knightMotion = KEYANIMANAGER->findAnimation("knightRightStop");
-		_knightMotion->start();
-	}
-
-
-	if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
-	{
-		_knightDirection = KNIGHTDIRECTION_LEFT_MOVE;
-		_knightMotion = KEYANIMANAGER->findAnimation("knightLeftMove");
-		_knightMotion->start();
-	}
-	if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
-	{
-		_knightDirection = KNIGHTDIRECTION_LEFT_STOP;
-		_knightMotion = KEYANIMANAGER->findAnimation("knightLeftStop");
-		_knightMotion->start();
-	}
-
-	if (KEYMANAGER->isOnceKeyDown('X'))
-	{
-		if (_knightDirection == KNIGHTDIRECTION_RIGHT_STOP
-			|| _knightDirection == KNIGHTDIRECTION_RIGHT_MOVE)
+		attackWait();
+		setState();
+		if (_nowPS == E_idle)
 		{
-			_knightDirection = KNIGHTDIRECTION_RIGHT_ATTACK;
-			_knightMotion = KEYANIMANAGER->findAnimation("knightRightAttack");
-			_knightMotion->start();
+			_nowPS = E_run;
+			
 		}
-		if (_knightDirection == KNIGHTDIRECTION_LEFT_STOP
-			|| _knightDirection == KNIGHTDIRECTION_LEFT_MOVE)
+		if (_nowPS == E_run)
 		{
-			_knightDirection = KNIGHTDIRECTION_LEFT_ATTACK;
-			_knightMotion = KEYANIMANAGER->findAnimation("knightLeftAttack");
-			_knightMotion->start();
+			if (_nowDir == E_LEFT)
+			{
+				_xSpeed = -3.0f;
+			}
+			else
+			{
+				_xSpeed = 3.0f;
+			}
+		}
+	
+		if (_nowPS == E_attack)
+		{
+			attackPlayer();
+		}
+		else
+		{
+			finishAttack();
 		}
 	}
-
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
+	else
 	{
-		_jump->jumping(&_x, &_y, 8.0f, 0.4f);
-
-		if (_knightDirection == KNIGHTDIRECTION_RIGHT_STOP)
-		{
-			_knightDirection = KNIGHTDIRECTION_RIGHT_JUMP;
-			_knightMotion = KEYANIMANAGER->findAnimation("knightRightJump");
-			_knightMotion->start();
-		}
-		if (_knightDirection == KNIGHTDIRECTION_RIGHT_MOVE)
-		{
-			_knightDirection = KNIGHTDIRECTION_RIGHT_MOVE_JUMP;
-			_knightMotion = KEYANIMANAGER->findAnimation("knightRightMoveJump");
-			_knightMotion->start();
-		}
+		
 	}
-
-
-	switch (_knightDirection)
+	Enemy::update();
+	//전체적인 렉트 크기 결정
+	Enemy::setRect(PointMake(50, 120));
+	//기본 공격 범위
+	Enemy::setnomalAttackRange(PointMake(75, 120),_nowDir);
+	if (_nowPS != E_Hit)
 	{
-		case KNIGHTDIRECTION_RIGHT_MOVE: case KNIGHTDIRECTION_RIGHT_MOVE_JUMP:
-			_x += KNIGHTSPEED;
-		break;
+		findPlayer();
 
-		case KNIGHTDIRECTION_LEFT_MOVE:
-			_x -= KNIGHTSPEED;
-		break;
 	}
-
-	_rc = RectMakeCenter(_x, _y, _image->getFrameWidth(), _image->getFrameHeight());
-
-	KEYANIMANAGER->update();
-	_jump->update();
-
+	colWithWall();
 }
 
 void knight::render()
 {
-	_image->aniRender(getMemDC(), _rc.left, _rc.top, _knightMotion);
+	_image->frameRender(_center.x, _center.y, _currentFrame.x, _currentFrame.y, _image->getFrameWidth(), _image->getFrameHeight());
+	unordered_map<string, RECT>::iterator	iRect;
+	for (iRect = _bodyRect.begin(); iRect != _bodyRect.end(); iRect++)
+	{
+		RECT rc = iRect->second;
+		RENDER->Rectangle(rc, D2D1::ColorF(D2D1::ColorF::Black));
+	}
 }
 
-void knight::rightFire(void * obj)
+void knight::colWithWall()
 {
-	knight* k = (knight*)obj;
-
-	k->setKnightDirection(KNIGHTDIRECTION_RIGHT_STOP);
-	k->setKnightMotion(KEYANIMANAGER->findAnimation("knightRightStop"));
-	k->getKnightMotion()->start();
-
+	unordered_map<string, RECT>::iterator	iRect;
+	if (_nowPS != p_jump)
+	{
+		for (iRect = _bodyRect.begin(); iRect != _bodyRect.end(); iRect++)
+		{
+			if (iRect->first == "bottom")
+			{
+				POINT point = TILEMANAGER->getIndex(PointMake((iRect->second.left + iRect->second.right) / 2, (iRect->second.bottom + iRect->second.top) / 2), TILESIZE);
+				if (TILEMANAGER->getTotalTile()[point.x + point.y * 100]->getAttribute() != nonBlocking)
+				{
+					_flying = false;
+					_ySpeed = 0;
+					_center.y = TILEMANAGER->getTotalTile()[point.x + point.y * 100]->getRect().top - 35;
+				}
+				else
+				{
+					_flying = true;
+				}
+			}
+			if (iRect->first == "rightBody")
+			{
+				POINT point = TILEMANAGER->getIndex(PointMake((iRect->second.left + iRect->second.right) / 2, (iRect->second.bottom + iRect->second.top) / 2), TILESIZE);
+				if (TILEMANAGER->getTotalTile()[point.x + point.y * 100]->getAttribute() == notJump )
+				{
+					_center.x = TILEMANAGER->getTotalTile()[point.x + point.y * 100]->getRect().left - _size.x/2;
+				}
+			}
+			if (iRect->first == "leftBody")
+			{
+				POINT point = TILEMANAGER->getIndex(PointMake((iRect->second.left + iRect->second.right) / 2, (iRect->second.bottom + iRect->second.top) / 2), TILESIZE);
+				if (TILEMANAGER->getTotalTile()[point.x + point.y * 100]->getAttribute() == notJump)
+				{
+					_center.x = TILEMANAGER->getTotalTile()[point.x + point.y * 100]->getRect().right + _size.x / 2;
+				}
+				else if ( point.x < 0)
+				{
+					_center.x =  _size.x / 2;
+				}
+			}
+		}
+	}
 }
 
-void knight::leftFire(void * obj)
+void knight::findPlayer()
 {
+
+	if (PLAYERMANAGER->findPlayer("PlayerOne") != NULL)
+	{
+		GameObject* player = PLAYERMANAGER->findPlayer("PlayerOne");
+		if (!_findPlayer)
+		{
+			RECT rc;
+			unordered_map<string, RECT>::iterator	iRect;
+			for (iRect = _bodyRect.begin(); iRect != _bodyRect.end(); iRect++)
+			{
+				if (iRect->first == "checkPlayer")
+				{
+					if (IntersectRect(&rc, player->getRect("body"), &iRect->second))
+					{
+						_findPlayer = true;
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			if (_nowPS != E_attack &&
+				_nowPS != E_attackWait)
+			{
+				if (player->getCenter().x < _center.x)
+				{
+					_nowDir = E_LEFT;
+				}
+				else
+				{
+					_nowDir = E_RIGHT;
+				}
+			}
+
+		}
+	}
 }
 
-void knight::rightJump(void * obj)
+void knight::attackWait()
 {
-	knight* k = (knight*)obj;
 
-	k->setKnightDirection(KNIGHTDIRECTION_RIGHT_STOP);
-	k->setKnightMotion(KEYANIMANAGER->findAnimation("knightRightStop"));
-	k->getKnightMotion()->start();
+	if (PLAYERMANAGER->findPlayer("PlayerOne") != NULL)
+	{
+		GameObject* player = PLAYERMANAGER->findPlayer("PlayerOne");
+		RECT rc;
+		unordered_map<string, RECT>::iterator	iRect;
+		if (_nowPS != E_attack&&
+			_nowPS!=E_Hit)
+		{
+			for (iRect = _bodyRect.begin(); iRect != _bodyRect.end(); iRect++)
+			{
+				if (iRect->first == "attackRange")
+				{
+					if (IntersectRect(&rc, player->getRect("body"), &iRect->second))
+					{
+						_nowPS = E_attackWait;
+						_xSpeed = 0;
+						break;
+					}
+				}
+			}
+		}
+	}
 }
 
-void knight::leftJump(void * obj)
+void knight::attackPlayer()
 {
+	if (PLAYERMANAGER->findPlayer("PlayerOne") != NULL)
+	{
+		GameObject* player = PLAYERMANAGER->findPlayer("PlayerOne");
+		RECT rc;
+		unordered_map<string, RECT>::iterator	iRect;
+		for (iRect = _bodyRect.begin(); iRect != _bodyRect.end(); iRect++)
+		{
+			if (iRect->first == "attackRange")
+			{
+				if (IntersectRect(&rc, player->getRect("body"), &iRect->second))
+				{
+					if (!findRect(player->getRect("body")))
+					{
+						cout << "attack!!" << endl;
+						_colider.push_back(player->getRect("body"));
+						((Player*)player)->hit(_enemyInfo.damage);
+						break;
+					}
+
+				}
+				else
+				{
+					if (findRect(player->getRect("body")))
+					{
+						eraseRect(player->getRect("body"));
+						break;
+					}
+				}
+			}
+
+		}
+	}
 }
 
-void knight::rightMoveJump(void * obj)
+void knight::setState()
 {
-	knight* k = (knight*)obj;
+	if (_nowPS == E_attackWait)
+	{
+		_frameCount++;
+		if (_frameCount > 50)
+		{
+			_nowPS = E_attack;
+			if (_nowDir == E_LEFT)
+			{
+				_xSpeed = -2.0f;
+			}
+			else
+			{
 
-	k->setKnightDirection(KNIGHTDIRECTION_RIGHT_MOVE);
-	k->setKnightMotion(KEYANIMANAGER->findAnimation("knightRightMove"));
-	k->getKnightMotion()->start();
+				_xSpeed = 2.0f;
+			}
+			_frameCount = 0;
+		}
+	}
 }
 
-void knight::leftMoveJump(void * obj)
+bool knight::findRect(RECT* rc)
 {
+	vector<RECT*>::iterator		iter;
+	for (iter = _colider.begin(); iter != _colider.end(); iter++)
+	{
+		if ((rc)==((*iter)))return true;
+	}
+	return false;
 }
+
+void knight::finishAttack()
+{
+	if (PLAYERMANAGER->findPlayer("PlayerOne") != NULL)
+	{
+
+		GameObject* player = PLAYERMANAGER->findPlayer("PlayerOne");
+		if (findRect(player->getRect("body")))
+		{
+			eraseRect(player->getRect("body"));
+		}
+	}
+}
+
+void knight::eraseRect(RECT * rc)
+{
+	vector<RECT*>::iterator		iter;
+	for (iter = _colider.begin(); iter != _colider.end(); )
+	{
+		if ((rc) == ((*iter)))
+		{
+			_colider.erase(iter);
+			break;
+		}
+		else
+		{
+			iter++;
+		}
+	}
+}
+
+
+
+
+
+
+

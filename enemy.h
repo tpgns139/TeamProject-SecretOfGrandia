@@ -1,77 +1,63 @@
 #pragma once
 #include "GameObject.h"
-
+#define Gravity		5
 enum EnemyState
 {
-	Idle,
-	Run,
-	Atk,
-	Dmg,
-	Dead,
-	deadEffect
+	E_idle,
+	E_run,
+	E_attack,
+	E_drop,
+	E_Hit,
+	E_attackWait
 };
-
-enum BossState
+enum EnemyKinds
 {
-	Come,
-	Boss_Idle,
-	Heading,
-	Breath,
-	Stun,
-	Big,
-	Small
-
+	E_Knight
 };
-enum EnemyName
-{
-	Name_Rabbit,
-	Name_Slime,
-	Name_Flower,
-	Name_Hydra_S, //여름
-	Name_Hydra_F, //가을
-	Name_Hydra_W  //겨울
-};
-
+typedef unordered_map <EnemyState, image*> ani;
+typedef multimap<EnemyKinds, ani>	_EnemyAniMap;
 enum direction
 {
-	LEFT,
-	RIGHT,
-	DOWN,
-	UP
-};
+	E_LEFT,
+	E_RIGHT
 
-struct info
+};
+struct enemyInfo
 {
-	RECT rc;
-	RECT senseRC;
-	float x, y;
-	image* img;
-	direction dir;
-	EnemyName name;
-	EnemyState state;
-	BossState _BossState;
-	animation* Ani;
-	bool changeAni;
-	int FPS;
-	float SPEED;
+	float damage;
+	float hp;
 };
-
 class Enemy : public GameObject
 {
 protected:
-
-	info en;
-
-
+	EnemyKinds _nowPK, _prePK;
+	EnemyState _nowPS, _prePS;
+	direction _nowDir, _preDir;
+	_EnemyAniMap		*_ani;
+	bool				_flying;
+	float				_xSpeed, _ySpeed, _gravity, _flyTime, _elipseTime;
+	int					_frameTerm;
+	unordered_map<string, RECT>						_bodyRect;
+	enemyInfo			_enemyInfo;
+	float _countFrameTime;
+	int _stopTime;
 public:
 	Enemy();
 	~Enemy();
 	virtual HRESULT init();
-	virtual HRESULT init(POINT pos, int FPS, float SPEED);
+	virtual HRESULT init(POINT pos);
 	virtual void release();
 	virtual void update();
 	virtual void render();
 	
-
+	void insertEnemyImage(EnemyKinds playerkinds, EnemyState playerstate, image* enemyImage);
+	void setEnemyImage();
+	void setFrameNum();
+	void setRect(POINT size);
+	void setnomalAttackRange(POINT size, direction _dir);
+	RECT* getBodyRect();
+	void hit(float damage);
+	bool waitTime(float time);
 };
+
 

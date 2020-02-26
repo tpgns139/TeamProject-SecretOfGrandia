@@ -35,13 +35,12 @@ HRESULT gameNode::init(bool managerInit)
 		TIMEMANAGER->init();
 		EFFECTMANAGER->init();
 		SOUNDMANAGER->init();
-		
+		ENEMYMANAGER->init();
 		SCENEMANAGER->init();
 		KEYANIMANAGER->init();
 		CAMERA->init();
 		RENDER->initRenderTager(_hWnd);
 		TILEMANAGER->init();
-		PLAYERMANAGER->init();
 	}
 
 	return S_OK;
@@ -72,6 +71,8 @@ void gameNode::release()
 		TILEMANAGER->releaseSingleton();
 		CAMERA->releaseSingleton();
 		RENDER->releaseSingleton();
+		ENEMYMANAGER->release();
+		ENEMYMANAGER->releaseSingleton();
 	}
 
 	ReleaseDC(_hWnd, _hdc);
